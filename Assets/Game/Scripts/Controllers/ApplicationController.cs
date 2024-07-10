@@ -7,13 +7,13 @@ namespace Game.Scripts.Controllers
     public class ApplicationController : IInitializable, IDisposable
     {
         private PlayerMovement playerMovement;
-        
+
         #region Injection
 
         private DiContainer _diContainer;
         private PrefabSettings _prefabSettings;
 
-        public ApplicationController( DiContainer diContainer,
+        public ApplicationController(DiContainer diContainer,
             PrefabSettings prefabSettings)
         {
             _diContainer = diContainer;
@@ -21,10 +21,10 @@ namespace Game.Scripts.Controllers
         }
 
         #endregion
-        
+
         public void Initialize()
         {
-            playerMovement =_diContainer.InstantiatePrefabForComponent<PlayerMovement>(_prefabSettings.playerMovement);
+            playerMovement = _diContainer.InstantiatePrefabForComponent<PlayerMovement>(_prefabSettings.playerMovement);
             playerMovement.Init();
         }
 
