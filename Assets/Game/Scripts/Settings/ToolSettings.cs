@@ -7,6 +7,6 @@ namespace Game.Scripts.Settings
     [CreateAssetMenu(fileName = nameof(ToolSettings), menuName = nameof(ToolSettings))]
     public class ToolSettings : ScriptableObject
     {
-        public List<FarmTool> farmTools;
+        public List<FarmToolData> farmTools;
     }
 }

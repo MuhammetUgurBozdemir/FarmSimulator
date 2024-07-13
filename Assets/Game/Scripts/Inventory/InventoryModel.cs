@@ -6,13 +6,13 @@ namespace Game.Scripts.Inventory
 {
     public class InventoryModel
     {
-        private List<FarmTool> tools;
+        private List<FarmToolData> tools;
 
-        public FarmTool GetTool(FarmTool farmTool) => tools.Find(x => x.Name == farmTool.Name);
+        public FarmToolData GetTool(FarmToolData farmToolData) => tools.Find(x => x.Name == farmToolData.Name);
 
-        public void AddTool(FarmTool farmTool)
+        public void AddTool(FarmToolData farmToolData)
         {
-            tools.Add(farmTool);
+            tools.Add(farmToolData);
         }
     }
 }

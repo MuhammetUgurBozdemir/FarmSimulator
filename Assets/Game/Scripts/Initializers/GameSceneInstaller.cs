@@ -1,4 +1,5 @@
 using Game.Scripts.Controllers;
+using Game.Scripts.Inventory;
 using Game.Scripts.Popup;
 using Zenject;
 
@@ -27,6 +28,7 @@ namespace Game.Scripts.Initializers
             Container.BindInterfacesAndSelfTo<ApplicationController>().AsSingle();
             
             Container.Bind<PopupController>().AsSingle();
+            Container.Bind<InventoryController>().AsSingle();
         }
     }
 }

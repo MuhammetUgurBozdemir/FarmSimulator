@@ -1,18 +1,45 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
+using Game.Scripts.Inventory;
+using Game.Scripts.Settings;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+using Zenject;
 
-public class InventoryPopupItemView : MonoBehaviour
+namespace Game.Scripts.PopupViews
 {
-    // Start is called before the first frame update
-    void Start()
+    public class InventoryPopupItemView : MonoBehaviour
     {
-        
-    }
+        [SerializeField] private Image sprite;
+        [SerializeField] private TextMeshProUGUI priceText;
+        private Action _clickAction;
+        private FarmToolData _data;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        private InventoryController _inventoryController;
+
+        [Inject]
+        private void Construct(
+            InventoryController inventoryController)
+        {
+            _inventoryController = inventoryController;
+        }
+        public void Init(FarmToolData data , Action clickAction)
+        {
+            sprite.sprite = data.Image;
+            priceText.text = data.Price.ToString();
+            _clickAction = clickAction;
+            _data = data;
+        }
+
+        public void OnClick()
+        {
+            _inventoryController.ownedTools.Add(_data);
+            _clickAction?.Invoke();
+        }
+
+        public void DestroyView()
+        {
+            Destroy(gameObject);
+        }
     }
 }

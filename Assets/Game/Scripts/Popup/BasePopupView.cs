@@ -6,6 +6,7 @@ namespace Game.Scripts.Popup
     {
         public void Init(PopupParameters parameters)
         {
+            ShowPopup();
         }
 
         public virtual void ShowPopup()
