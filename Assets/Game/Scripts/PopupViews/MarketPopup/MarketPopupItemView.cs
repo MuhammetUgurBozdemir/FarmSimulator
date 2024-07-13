@@ -8,11 +8,11 @@ using Zenject;
 
 namespace Game.Scripts.PopupViews
 {
-    public class InventoryPopupItemView : MonoBehaviour
+    public class MarketPopupItemView : MonoBehaviour
     {
         [SerializeField] private Image sprite;
         [SerializeField] private TextMeshProUGUI priceText;
-        private Action _clickAction;
+        private Action<MarketPopupItemView> _clickAction;
         private FarmToolData _data;
 
         private InventoryController _inventoryController;
@@ -23,7 +23,7 @@ namespace Game.Scripts.PopupViews
         {
             _inventoryController = inventoryController;
         }
-        public void Init(FarmToolData data , Action clickAction)
+        public void Init(FarmToolData data , Action<MarketPopupItemView> clickAction)
         {
             sprite.sprite = data.Image;
             priceText.text = data.Price.ToString();
@@ -34,7 +34,7 @@ namespace Game.Scripts.PopupViews
         public void OnClick()
         {
             _inventoryController.ownedTools.Add(_data);
-            _clickAction?.Invoke();
+            _clickAction?.Invoke(this);
         }
 
         public void DestroyView()

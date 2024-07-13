@@ -7,13 +7,13 @@ using Zenject;
 
 namespace Game.Scripts.PopupViews
 {
-    public class InventoryPopup : PopupView
+    public class MarketPopup : PopupView
     {
         private DiContainer _diContainer;
         private ToolSettings _toolSettings;
         private InventoryController _inventoryController;
-        private List<InventoryItemView> items = new List<InventoryItemView>();
-        [SerializeField] private InventoryItemView itemViewPrefab;
+        private List<MarketPopupItemView> items = new List<MarketPopupItemView>();
+        [SerializeField] private MarketPopupItemView itemViewPrefab;
         [SerializeField] private Transform contentHolder;
 
         [Inject]
@@ -39,14 +39,14 @@ namespace Game.Scripts.PopupViews
             {
                 if (_inventoryController.ownedTools.Contains(toolSettingsFarmTool)) continue;
 
-                var item = _diContainer.InstantiatePrefabForComponent<InventoryItemView>(itemViewPrefab);
+                var item = _diContainer.InstantiatePrefabForComponent<MarketPopupItemView>(itemViewPrefab);
                 item.transform.SetParent(contentHolder);
                 item.Init(toolSettingsFarmTool, RemoveSelectedItem);
                 items.Add(item);
             }
         }
 
-        private void RemoveSelectedItem(InventoryItemView item)
+        private void RemoveSelectedItem(MarketPopupItemView item)
         {
             items.Remove(item);
             item.DestroyView();

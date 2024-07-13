@@ -39,11 +39,6 @@ namespace Game.Scripts.Controllers.Player
         void FixedUpdate()
         {
             ProcessMove(onMove.WASD.ReadValue<Vector2>());
-
-            if (Input.GetKey(KeyCode.C))
-            {
-                _popupController.PopupRequest("InventoryPopup",new PopupParameters());
-            }
         }
 
         private void LateUpdate()
@@ -75,6 +70,8 @@ namespace Game.Scripts.Controllers.Player
 
         void ProcessLook(Vector2 input)
         {
+            if(_popupController.isActive) return;
+            
             float mouseX = input.x;
             float mouseY = input.y;
 

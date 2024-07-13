@@ -1,6 +1,7 @@
 using Game.Scripts.Controllers;
 using Game.Scripts.Inventory;
 using Game.Scripts.Popup;
+using Nevermind.CriminalWords.Installer;
 using Zenject;
 
 namespace Game.Scripts.Initializers
@@ -12,8 +13,7 @@ namespace Game.Scripts.Initializers
         private PrefabSettings _prefabSettings;
 
         [Inject]
-        private void Construct(PrefabSettings prefabSetting
-        )
+        private void Construct(PrefabSettings prefabSetting)
         {
             _prefabSettings = prefabSetting;
         }
@@ -22,13 +22,13 @@ namespace Game.Scripts.Initializers
 
         public override void InstallBindings()
         {
-            //signal install
-            // GameSignalsInstaller.Install(Container);
+            GameSignalsInstaller.Install(Container);
 
             Container.BindInterfacesAndSelfTo<ApplicationController>().AsSingle();
-            
+
             Container.Bind<PopupController>().AsSingle();
             Container.Bind<InventoryController>().AsSingle();
+            Container.Bind<CurrencyController>().AsSingle();
         }
     }
 }

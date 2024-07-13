@@ -10,6 +10,7 @@ namespace Game.Scripts.Popup
 
         private PopupSettings _popupSettings;
         private DiContainer _diContainer;
+        public bool isActive;
 
         [Inject]
         private void Construct(PopupSettings popupSettings, DiContainer diContainer)
@@ -24,6 +25,14 @@ namespace Game.Scripts.Popup
             popups.Add(popup);
             
             popup.Init(parameters);
+
+            isActive = true;
+        }
+
+        public void ClosePopup(PopupView popupView)
+        {
+            popups.Remove(popupView);
+            isActive = false;
         }
     }
 }

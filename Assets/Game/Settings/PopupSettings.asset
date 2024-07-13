@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PopupViews:
   - {fileID: 4287584972862360777, guid: b71b93f206684417bbba10546b8283b5, type: 3}
+  - {fileID: 4287584972862360777, guid: 0f823f5bc92ef4804965efead75b8c32, type: 3}
