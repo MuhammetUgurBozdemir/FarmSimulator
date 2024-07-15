@@ -201,6 +201,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 131614103}
     m_Modifications:
+    - target: {fileID: 1708559968590091457, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1708559968590091457, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4412318467573204743, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
       propertyPath: m_Name
       value: SM_Env_Dirt_Skirt_01 (10)
@@ -243,6 +251,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5831730947836103331, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8653839554031039516, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8653839554031039516, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -756,6 +772,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 131614103}
     m_Modifications:
+    - target: {fileID: 1708559968590091457, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1708559968590091457, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4412318467573204743, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
       propertyPath: m_Name
       value: SM_Env_Dirt_Skirt_01 (6)
@@ -800,6 +824,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8653839554031039516, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8653839554031039516, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -810,6 +842,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5831730947836103331, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
   m_PrefabInstance: {fileID: 314603999}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &319150605 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8653839553691958738, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
+  m_PrefabInstance: {fileID: 455751270052774289}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &338565614
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1611,6 +1654,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 131614103}
     m_Modifications:
+    - target: {fileID: 1708559968590091457, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1708559968590091457, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4412318467573204743, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
       propertyPath: m_Name
       value: SM_Env_Dirt_Skirt_01 (4)
@@ -1653,6 +1704,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5831730947836103331, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8653839554031039516, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8653839554031039516, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1767,6 +1826,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 131614103}
     m_Modifications:
+    - target: {fileID: 1708559968590091457, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1708559968590091457, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4412318467573204743, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
       propertyPath: m_Name
       value: SM_Env_Dirt_Skirt_01 (5)
@@ -1809,6 +1876,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5831730947836103331, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8653839554031039516, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8653839554031039516, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1984,6 +2059,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 131614103}
     m_Modifications:
+    - target: {fileID: 1708559968590091457, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1708559968590091457, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4412318467573204743, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
       propertyPath: m_Name
       value: SM_Env_Dirt_Skirt_01 (2)
@@ -2026,6 +2109,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5831730947836103331, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8653839554031039516, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8653839554031039516, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2112,6 +2203,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 131614103}
     m_Modifications:
+    - target: {fileID: 1708559968590091457, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1708559968590091457, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4412318467573204743, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
       propertyPath: m_Name
       value: SM_Env_Dirt_Skirt_01 (7)
@@ -2154,6 +2253,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5831730947836103331, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8653839554031039516, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8653839554031039516, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2433,6 +2540,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 131614103}
     m_Modifications:
+    - target: {fileID: 1708559968590091457, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1708559968590091457, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4412318467573204743, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
       propertyPath: m_Name
       value: SM_Env_Dirt_Skirt_01 (1)
@@ -2475,6 +2590,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5831730947836103331, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8653839554031039516, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8653839554031039516, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -3069,6 +3192,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 131614103}
     m_Modifications:
+    - target: {fileID: 1708559968590091457, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1708559968590091457, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4412318467573204743, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
       propertyPath: m_Name
       value: SM_Env_Dirt_Skirt_01 (9)
@@ -3113,6 +3244,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8653839554031039516, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8653839554031039516, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3131,6 +3270,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 131614103}
     m_Modifications:
+    - target: {fileID: 1708559968590091457, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1708559968590091457, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4412318467573204743, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
       propertyPath: m_Name
       value: SM_Env_Dirt_Skirt_01 (11)
@@ -3173,6 +3320,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5831730947836103331, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8653839554031039516, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8653839554031039516, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -3609,6 +3764,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 131614103}
     m_Modifications:
+    - target: {fileID: 1708559968590091457, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1708559968590091457, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4412318467573204743, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
       propertyPath: m_Name
       value: SM_Env_Dirt_Skirt_01 (8)
@@ -3651,6 +3814,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5831730947836103331, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8653839554031039516, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8653839554031039516, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -3997,6 +4168,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 131614103}
     m_Modifications:
+    - target: {fileID: 1708559968590091457, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1708559968590091457, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4412318467573204743, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
       propertyPath: m_Name
       value: SM_Env_Dirt_Skirt_01 (3)
@@ -4039,6 +4218,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5831730947836103331, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8653839554031039516, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8653839554031039516, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -4288,6 +4475,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 131614103}
     m_Modifications:
+    - target: {fileID: 1608353770320967235, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
+      propertyPath: slider
+      value: 
+      objectReference: {fileID: 319150605}
     - target: {fileID: 4412318467573204743, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
       propertyPath: m_Name
       value: SM_Env_Dirt_Skirt_01
@@ -4330,6 +4521,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5831730947836103331, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8653839554031039516, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8653839554031039516, guid: 0f1897fd1589c4c08b9ad9d43f3f1469, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

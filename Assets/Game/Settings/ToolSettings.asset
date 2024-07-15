@@ -13,14 +13,6 @@ MonoBehaviour:
   m_Name: ToolSettings
   m_EditorClassIdentifier: 
   farmTools:
-  - Name: Watering Can
-    Price: 0
-    Level: 0
-    IsUnlocked: 0
-    FarmToolViewPrefab: {fileID: -3745747233737585073, guid: bef3a55f3bf4b4e2ca777bc6319994a2, type: 3}
-    Image: {fileID: 21300000, guid: d8b784b904bd64bbe9afa0e02fefb128, type: 3}
-    AnimationKey: isWatering
-    OperatingType: 01000000
   - Name: Spade
     Price: 0
     Level: 0
@@ -29,6 +21,7 @@ MonoBehaviour:
     Image: {fileID: 21300000, guid: 1645536ce75004446a2da98d79303ca7, type: 3}
     AnimationKey: isDigging
     OperatingType: 0000000002000000
+    ProcessTime: 5
   - Name: Scythe
     Price: 0
     Level: 0
@@ -37,11 +30,4 @@ MonoBehaviour:
     Image: {fileID: 21300000, guid: fa789fdd988e64fe28a4b8594ab3463b, type: 3}
     AnimationKey: isHarvesting
     OperatingType: 0000000002000000
-  - Name: Scythe
-    Price: 0
-    Level: 0
-    IsUnlocked: 0
-    FarmToolViewPrefab: {fileID: 7758205707187422574, guid: aabcbe65728fe46da80886677b132cf0, type: 3}
-    Image: {fileID: 21300000, guid: fa789fdd988e64fe28a4b8594ab3463b, type: 3}
-    AnimationKey: isHarvesting
-    OperatingType: 
+    ProcessTime: 3

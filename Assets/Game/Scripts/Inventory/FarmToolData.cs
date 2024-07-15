@@ -17,5 +17,6 @@ namespace Game.Scripts.Inventory
         public Sprite Image;
         public string AnimationKey;
         public List<OperationType> OperatingType;
+        public float ProcessTime;
     }
 }
