@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using DG.Tweening;
 using Game.Scripts.FarmFields;
+using Game.Scripts.Player;
 using Game.Scripts.Popup;
 using UnityEngine;
 using Zenject;
@@ -32,12 +33,14 @@ namespace Game.Scripts.Controllers.Player
 
         private Camera _mainCamera;
         private PopupController _popupController;
+        private PlayerController _playerController;
 
         [Inject]
-        private void Construct([Inject(Id = "mainCam")] Camera mainCamera, PopupController popupController)
+        private void Construct([Inject(Id = "mainCam")] Camera mainCamera, PopupController popupController,PlayerController playerController)
         {
             _mainCamera = mainCamera;
             _popupController = popupController;
+            _playerController = playerController;
         }
 
         public void Init()
@@ -123,10 +126,11 @@ namespace Game.Scripts.Controllers.Player
 
         IEnumerator AnimDelay(Action action)
         {
-            animator.SetBool(IsDigging, true);
+            if (_playerController.GetItemData == null) yield break;
+            
+            animator.SetBool(_playerController.GetItemData.AnimationKey, true);
             isAnimation = true;
 
-            // _mainCamera.transform.DOLocalRotate(new Vector3(100, 0, transform.localRotation.z), .3f);
             _mainCamera.transform.SetParent(head);
             _mainCamera.transform.localPosition = Vector3.zero;
 
@@ -138,7 +142,7 @@ namespace Game.Scripts.Controllers.Player
 
             yield return new WaitForSeconds(state.length);
 
-            animator.SetBool(IsDigging, false);
+            animator.SetBool(_playerController.GetItemData.AnimationKey, false);
 
             _mainCamera.transform.SetParent(transform);
             _mainCamera.transform.DOLocalMove(camOrigin, .3f);

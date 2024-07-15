@@ -13,6 +13,8 @@ namespace Game.Scripts.Player
         private Transform ToolHolder;
         private ToolView _equippedItem;
         private FarmToolData _equippedItemData;
+
+        public FarmToolData GetItemData => _equippedItemData;
         
 
         #region Injection
