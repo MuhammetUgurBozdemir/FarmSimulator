@@ -11,7 +11,7 @@ namespace Game.Scripts.Inventory
         public int Price;
         [HideInInspector] public int Level;
         [HideInInspector] public bool IsUnlocked;
-        public GameObject FarmToolPrefab;
+        public ToolView FarmToolViewPrefab;
         public Sprite Image;
     }
 }

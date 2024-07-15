@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Game.Scripts.Inventory;
+using Game.Scripts.Player;
 using Game.Scripts.Popup;
 using Game.Scripts.Settings;
 using UnityEngine;
@@ -9,20 +10,25 @@ namespace Game.Scripts.PopupViews
 {
     public class InventoryPopup : PopupView
     {
-        private DiContainer _diContainer;
-        private ToolSettings _toolSettings;
-        private InventoryController _inventoryController;
+      
         private List<InventoryItemView> items = new List<InventoryItemView>();
         [SerializeField] private InventoryItemView itemViewPrefab;
         [SerializeField] private Transform contentHolder;
+        
+        private DiContainer _diContainer;
+        private ToolSettings _toolSettings;
+        private InventoryController _inventoryController;
+        private PlayerController _playerController;
 
         [Inject]
         private void Construct(DiContainer diContainer, ToolSettings toolSettings,
-            InventoryController inventoryController)
+            InventoryController inventoryController,
+            PlayerController playerController)
         {
             _diContainer = diContainer;
             _toolSettings = toolSettings;
             _inventoryController = inventoryController;
+            _playerController = playerController;
         }
 
 
@@ -37,6 +43,8 @@ namespace Game.Scripts.PopupViews
         {
             foreach (FarmToolData toolSettingsFarmTool in _inventoryController.ownedTools)
             {
+                if(_playerController.IsEquipped(toolSettingsFarmTool)) continue;
+                
                 var item = _diContainer.InstantiatePrefabForComponent<InventoryItemView>(itemViewPrefab);
                 item.transform.SetParent(contentHolder);
                 item.Init(toolSettingsFarmTool, RemoveSelectedItem);
@@ -46,8 +54,14 @@ namespace Game.Scripts.PopupViews
 
         private void RemoveSelectedItem(InventoryItemView item)
         {
-            items.Remove(item);
-            item.DestroyView();
+            for (var i = items.Count - 1; i >= 0; i--)
+            {
+                items[i].DestroyView();
+            }
+
+            items.Clear();
+
+            ListItem();
         }
     }
 }

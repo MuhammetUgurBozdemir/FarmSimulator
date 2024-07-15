@@ -11,18 +11,22 @@ namespace Game.Scripts.Player
     {
         private PlayerMovement playerMovement;
         private Transform ToolHolder;
-        private GameObject _equippedItem;
+        private ToolView _equippedItem;
+        private FarmToolData _equippedItemData;
 
         #region Injection
 
         private DiContainer _diContainer;
         private PrefabSettings _prefabSettings;
+        private InventoryController _inventoryController;
 
         public PlayerController(DiContainer diContainer,
-            PrefabSettings prefabSettings)
+            PrefabSettings prefabSettings,
+            InventoryController inventoryController)
         {
             _diContainer = diContainer;
             _prefabSettings = prefabSettings;
+            _inventoryController = inventoryController;
         }
 
         #endregion
@@ -34,9 +38,19 @@ namespace Game.Scripts.Player
         }
         public void EquipItem(FarmToolData data)
         {
-            _equippedItem = _diContainer.InstantiatePrefab(data.FarmToolPrefab,playerMovement.toolHolder);
+            if (_equippedItemData != null)
+            {
+                _equippedItem.DestroyView();
+            }
+            
+            _equippedItem = _diContainer.InstantiatePrefabForComponent<ToolView>(data.FarmToolViewPrefab,playerMovement.toolHolder);
+            _equippedItemData = data;
         }
 
+        public bool IsEquipped(FarmToolData data)
+        {
+            return data == _equippedItemData;
+        }
         public void Dispose()
         {
             playerMovement.Dispose();

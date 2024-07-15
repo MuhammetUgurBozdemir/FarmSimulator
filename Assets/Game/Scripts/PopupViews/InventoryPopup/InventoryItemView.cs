@@ -21,7 +21,7 @@ namespace Game.Scripts.PopupViews
         private PlayerController _playerController;
 
         [Inject]
-        private void Construct(InventoryController inventoryController,PlayerController playerController)
+        private void Construct(InventoryController inventoryController, PlayerController playerController)
         {
             _inventoryController = inventoryController;
             _playerController = playerController;
@@ -37,7 +37,7 @@ namespace Game.Scripts.PopupViews
 
         public void OnClick()
         {
-           _playerController.EquipItem(_data);
+            _playerController.EquipItem(_data);
             _clickAction?.Invoke(this);
         }
 
