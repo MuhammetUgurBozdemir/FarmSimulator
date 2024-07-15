@@ -13,5 +13,6 @@ namespace Game.Scripts.Inventory
         [HideInInspector] public bool IsUnlocked;
         public ToolView FarmToolViewPrefab;
         public Sprite Image;
+        public string AnimationKey;
     }
 }

@@ -16,6 +16,6 @@ MonoBehaviour:
     Name: Bush
     Reward: 100
     Prefab:
-    - {fileID: 1244697753454076, guid: 8c64118ce05103a49965da9b0265081f, type: 3}
-    - {fileID: 1685243190553880, guid: 560f60ddf78a6b240901212ae5507fef, type: 3}
-    - {fileID: 1262146782179896, guid: 669a6d7d2d0d11440a05b24cce8e773b, type: 3}
+    - {fileID: 4300000, guid: 472e6f42396124543a8e84ec9b1f6feb, type: 3}
+    - {fileID: 4300000, guid: c3d7acc6475149941a3c55eb4ad686d7, type: 3}
+    - {fileID: 4300000, guid: 8484d07b53c7bda4ea4804e01a561f95, type: 3}

@@ -78,6 +78,7 @@ MonoBehaviour:
   speed: 5
   animator: {fileID: 3490473997630284793}
   body: {fileID: 6204371295439821423}
+  head: {fileID: 531252274607941788}
   toolHolder: {fileID: 4677919920847160223}
 --- !u!114 &-6709421443164408863
 MonoBehaviour:
@@ -205,6 +206,11 @@ PrefabInstance:
       addedObject: {fileID: 4677919920847160223}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: efa975a688ccb41d3bd4aaf27f94cd12, type: 3}
+--- !u!4 &531252274607941788 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3280181179842254714, guid: efa975a688ccb41d3bd4aaf27f94cd12, type: 3}
+  m_PrefabInstance: {fileID: 3088035883697618918}
+  m_PrefabAsset: {fileID: 0}
 --- !u!95 &3490473997630284793 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 1921436005576547359, guid: efa975a688ccb41d3bd4aaf27f94cd12, type: 3}

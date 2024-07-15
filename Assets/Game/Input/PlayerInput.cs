@@ -153,6 +153,34 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Click"",
+            ""id"": ""9bad0ab2-ad47-4a1c-8fd6-8d59c8f880e4"",
+            ""actions"": [
+                {
+                    ""name"": ""Clicked"",
+                    ""type"": ""Button"",
+                    ""id"": ""be42833d-2705-454f-9577-64fe1f583ad8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""b1fac1e3-e40c-47d7-aabd-df35d73b687d"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Clicked"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -164,6 +192,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         // Jump
         m_Jump = asset.FindActionMap("Jump", throwIfNotFound: true);
         m_Jump_Newaction = m_Jump.FindAction("New action", throwIfNotFound: true);
+        // Click
+        m_Click = asset.FindActionMap("Click", throwIfNotFound: true);
+        m_Click_Clicked = m_Click.FindAction("Clicked", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -321,6 +352,52 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         }
     }
     public JumpActions @Jump => new JumpActions(this);
+
+    // Click
+    private readonly InputActionMap m_Click;
+    private List<IClickActions> m_ClickActionsCallbackInterfaces = new List<IClickActions>();
+    private readonly InputAction m_Click_Clicked;
+    public struct ClickActions
+    {
+        private @PlayerInput m_Wrapper;
+        public ClickActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Clicked => m_Wrapper.m_Click_Clicked;
+        public InputActionMap Get() { return m_Wrapper.m_Click; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(ClickActions set) { return set.Get(); }
+        public void AddCallbacks(IClickActions instance)
+        {
+            if (instance == null || m_Wrapper.m_ClickActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_ClickActionsCallbackInterfaces.Add(instance);
+            @Clicked.started += instance.OnClicked;
+            @Clicked.performed += instance.OnClicked;
+            @Clicked.canceled += instance.OnClicked;
+        }
+
+        private void UnregisterCallbacks(IClickActions instance)
+        {
+            @Clicked.started -= instance.OnClicked;
+            @Clicked.performed -= instance.OnClicked;
+            @Clicked.canceled -= instance.OnClicked;
+        }
+
+        public void RemoveCallbacks(IClickActions instance)
+        {
+            if (m_Wrapper.m_ClickActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IClickActions instance)
+        {
+            foreach (var item in m_Wrapper.m_ClickActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_ClickActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public ClickActions @Click => new ClickActions(this);
     public interface IOnMoveActions
     {
         void OnWASD(InputAction.CallbackContext context);
@@ -329,5 +406,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     public interface IJumpActions
     {
         void OnNewaction(InputAction.CallbackContext context);
+    }
+    public interface IClickActions
+    {
+        void OnClicked(InputAction.CallbackContext context);
     }
 }

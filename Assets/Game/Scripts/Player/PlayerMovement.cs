@@ -1,3 +1,7 @@
+using System;
+using System.Collections;
+using DG.Tweening;
+using Game.Scripts.FarmFields;
 using Game.Scripts.Popup;
 using UnityEngine;
 using Zenject;
@@ -8,14 +12,21 @@ namespace Game.Scripts.Controllers.Player
     {
         private PlayerInput playerInput;
         private PlayerInput.OnMoveActions onMove;
+        private PlayerInput.ClickActions onClick;
         [SerializeField] private CharacterController characterController;
         private Vector3 playerVelocity;
         [SerializeField] private float speed = 5;
         [SerializeField] private Animator animator;
         [SerializeField] private Transform body;
+        [SerializeField] private Transform head;
         public Transform toolHolder;
+        private Vector3 camOrigin;
 
         private static readonly int IsRunning = Animator.StringToHash("isRunning");
+        private static readonly int IsDigging = Animator.StringToHash("isDigging");
+
+        private bool isAnimation;
+
         private float xRot;
         private float yRot;
 
@@ -23,7 +34,7 @@ namespace Game.Scripts.Controllers.Player
         private PopupController _popupController;
 
         [Inject]
-        private void Construct([Inject(Id = "mainCam")] Camera mainCamera,PopupController popupController)
+        private void Construct([Inject(Id = "mainCam")] Camera mainCamera, PopupController popupController)
         {
             _mainCamera = mainCamera;
             _popupController = popupController;
@@ -32,11 +43,17 @@ namespace Game.Scripts.Controllers.Player
         public void Init()
         {
             _mainCamera.transform.SetParent(transform);
+            camOrigin = _mainCamera.transform.localPosition;
             playerInput = new PlayerInput();
             onMove = playerInput.OnMove;
+            onClick = playerInput.Click;
+
+            onClick.Clicked.performed += ctx => ProcessHarvest();
 
             onMove.Enable();
+            onClick.Enable();
         }
+
         void FixedUpdate()
         {
             ProcessMove(onMove.WASD.ReadValue<Vector2>());
@@ -44,13 +61,13 @@ namespace Game.Scripts.Controllers.Player
 
         private void LateUpdate()
         {
-             ProcessLook(onMove.Look.ReadValue<Vector2>());
+            ProcessLook(onMove.Look.ReadValue<Vector2>());
         }
 
         void ProcessMove(Vector2 input)
         {
-            if(_popupController.isActive) return;
-            
+            if (_popupController.isActive) return;
+
             Vector3 moveDir = Vector3.zero;
 
             moveDir.x = input.x;
@@ -63,30 +80,76 @@ namespace Game.Scripts.Controllers.Player
 
             if (input.x > 0 || input.y > 0)
             {
-                animator.SetBool(IsRunning , true);
+                animator.SetBool(IsRunning, true);
             }
             else
             {
-                animator.SetBool(IsRunning,false);
+                animator.SetBool(IsRunning, false);
             }
         }
 
         void ProcessLook(Vector2 input)
         {
-            if(_popupController.isActive) return;
-            
+            if (_popupController.isActive) return;
+
+            if (isAnimation)
+            {
+                return;
+            }
+
             float mouseX = input.x;
             float mouseY = input.y;
 
             xRot -= (mouseY * Time.deltaTime) * 120;
+
+            _mainCamera.transform.localRotation = Quaternion.Euler(xRot, 0, 0);
+            transform.Rotate(Vector3.up * (mouseX * Time.deltaTime) * 100);
+        }
+
+
+        void ProcessHarvest()
+        {
+            RaycastHit hit;
+
+            if (Physics.Raycast(_mainCamera.transform.position, _mainCamera.transform.forward, out hit, 100))
+            {
+                if (hit.transform.CompareTag($"Plant") &&
+                    Vector3.Distance(transform.position, hit.transform.position) < 5)
+                {
+                    StartCoroutine(AnimDelay(hit.transform.GetComponent<FarmField>().Plant));
+                }
+            }
+        }
+
+        IEnumerator AnimDelay(Action action)
+        {
+            animator.SetBool(IsDigging, true);
+            isAnimation = true;
+
+            // _mainCamera.transform.DOLocalRotate(new Vector3(100, 0, transform.localRotation.z), .3f);
+            _mainCamera.transform.SetParent(head);
+            _mainCamera.transform.localPosition = Vector3.zero;
+
+            yield return new WaitForSeconds(.1f);
             
-            _mainCamera.transform.localRotation=Quaternion.Euler(xRot,0,0);
-            transform.Rotate(Vector3.up * (mouseX * Time.deltaTime) * 120);
+            var state = animator.GetCurrentAnimatorStateInfo(0);
+            
+            Debug.Log(state.length);
+
+            yield return new WaitForSeconds(state.length);
+
+            animator.SetBool(IsDigging, false);
+
+            _mainCamera.transform.SetParent(transform);
+            _mainCamera.transform.DOLocalMove(camOrigin, .3f);
+            isAnimation = false;
+            action?.Invoke();
         }
 
         public void Dispose()
-        {  
+        {
             onMove.Disable();
+            onClick.Disable();
         }
     }
 }

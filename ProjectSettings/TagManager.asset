@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Market
   - Inventory
+  - Plant
   layers:
   - Default
   - TransparentFX
@@ -16,7 +17,7 @@ TagManager:
   - Door
   - Market
   - Inventory
-  - 
+  - Plant
   - 
   - 
   - 
