@@ -1,5 +1,4 @@
 using System;
-using Game.Scripts.Controllers.Player;
 using Game.Scripts.Inventory;
 using Game.Scripts.Settings;
 using UnityEngine;

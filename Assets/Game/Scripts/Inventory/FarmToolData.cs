@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using Game.Scripts.Enum;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,5 +16,6 @@ namespace Game.Scripts.Inventory
         public ToolView FarmToolViewPrefab;
         public Sprite Image;
         public string AnimationKey;
+        public List<OperationType> OperatingType;
     }
 }

@@ -2,12 +2,11 @@ using System;
 using System.Collections;
 using DG.Tweening;
 using Game.Scripts.FarmFields;
-using Game.Scripts.Player;
 using Game.Scripts.Popup;
 using UnityEngine;
 using Zenject;
 
-namespace Game.Scripts.Controllers.Player
+namespace Game.Scripts.Player
 {
     public class PlayerMovement : MonoBehaviour
     {
@@ -36,7 +35,8 @@ namespace Game.Scripts.Controllers.Player
         private PlayerController _playerController;
 
         [Inject]
-        private void Construct([Inject(Id = "mainCam")] Camera mainCamera, PopupController popupController,PlayerController playerController)
+        private void Construct([Inject(Id = "mainCam")] Camera mainCamera, PopupController popupController,
+            PlayerController playerController)
         {
             _mainCamera = mainCamera;
             _popupController = popupController;
@@ -114,20 +114,18 @@ namespace Game.Scripts.Controllers.Player
         {
             RaycastHit hit;
 
-            if (Physics.Raycast(_mainCamera.transform.position, _mainCamera.transform.forward, out hit, 100))
+            if (!Physics.Raycast(_mainCamera.transform.position, _mainCamera.transform.forward, out hit, 100)) return;
+            
+            if (hit.transform.CompareTag($"Plant") && Vector3.Distance(transform.position, hit.transform.position) < 5)
             {
-                if (hit.transform.CompareTag($"Plant") &&
-                    Vector3.Distance(transform.position, hit.transform.position) < 5)
-                {
-                    StartCoroutine(AnimDelay(hit.transform.GetComponent<FarmField>().Plant));
-                }
+                StartCoroutine(AnimDelay(hit.transform.GetComponent<FarmField>().Plant));
             }
         }
 
         IEnumerator AnimDelay(Action action)
         {
             if (_playerController.GetItemData == null) yield break;
-            
+
             animator.SetBool(_playerController.GetItemData.AnimationKey, true);
             isAnimation = true;
 
@@ -135,10 +133,8 @@ namespace Game.Scripts.Controllers.Player
             _mainCamera.transform.localPosition = Vector3.zero;
 
             yield return new WaitForSeconds(.1f);
-            
+
             var state = animator.GetCurrentAnimatorStateInfo(0);
-            
-            Debug.Log(state.length);
 
             yield return new WaitForSeconds(state.length);
 

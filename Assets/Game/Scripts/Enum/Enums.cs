@@ -5,4 +5,11 @@ namespace Game.Scripts.Enum
         Primary,
         Secondary
     }
+    
+    public enum OperationType
+    {
+        Digging,
+        Watering,
+        Harvesting
+    }
 }

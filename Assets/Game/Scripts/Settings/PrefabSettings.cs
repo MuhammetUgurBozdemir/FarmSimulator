@@ -1,4 +1,3 @@
-using Game.Scripts.Controllers.Player;
 using Game.Scripts.Player;
 using UnityEngine;
 
