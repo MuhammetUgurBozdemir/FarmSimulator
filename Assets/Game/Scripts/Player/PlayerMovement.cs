@@ -114,11 +114,13 @@ namespace Game.Scripts.Player
         {
             RaycastHit hit;
 
-            if (!Physics.Raycast(_mainCamera.transform.position, _mainCamera.transform.forward, out hit, 100)) return;
-            
-            if (hit.transform.CompareTag($"Plant") && Vector3.Distance(transform.position, hit.transform.position) < 5)
+            if (Physics.Raycast(_mainCamera.transform.position, _mainCamera.transform.forward, out hit, 100))
             {
-                StartCoroutine(AnimDelay(hit.transform.GetComponent<FarmField>().Plant));
+                if (hit.transform.CompareTag($"Plant") &&
+                    Vector3.Distance(transform.position, hit.transform.position) < 5)
+                {
+                    StartCoroutine(AnimDelay(hit.transform.GetComponent<FarmField>().Plant));
+                }
             }
         }
 
