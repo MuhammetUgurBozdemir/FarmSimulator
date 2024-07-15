@@ -1,10 +1,12 @@
 using Game.Scripts.Controllers.Player;
+using Game.Scripts.Player;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-
-[CreateAssetMenu(fileName = nameof(PrefabSettings), menuName = nameof(PrefabSettings))]
-public class PrefabSettings : ScriptableObject
+namespace Game.Scripts.Settings
 {
-    [FormerlySerializedAs("playerController")] public PlayerMovement playerMovement;
+     [CreateAssetMenu(fileName = nameof(PrefabSettings), menuName = nameof(PrefabSettings))]
+     public class PrefabSettings : ScriptableObject
+     {
+          public PlayerMovement playerMovement;
+     }
 }

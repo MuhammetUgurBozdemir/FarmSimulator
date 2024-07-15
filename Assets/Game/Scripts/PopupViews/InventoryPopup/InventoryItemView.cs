@@ -1,5 +1,7 @@
 using System;
+using Game.Scripts.Controllers;
 using Game.Scripts.Inventory;
+using Game.Scripts.Player;
 using Game.Scripts.Settings;
 using TMPro;
 using UnityEngine;
@@ -16,12 +18,13 @@ namespace Game.Scripts.PopupViews
         private FarmToolData _data;
 
         private InventoryController _inventoryController;
+        private PlayerController _playerController;
 
         [Inject]
-        private void Construct(
-            InventoryController inventoryController)
+        private void Construct(InventoryController inventoryController,PlayerController playerController)
         {
             _inventoryController = inventoryController;
+            _playerController = playerController;
         }
 
         public void Init(FarmToolData data, Action<InventoryItemView> clickAction)
@@ -34,7 +37,7 @@ namespace Game.Scripts.PopupViews
 
         public void OnClick()
         {
-            _inventoryController.ownedTools.Add(_data);
+           _playerController.EquipItem(_data);
             _clickAction?.Invoke(this);
         }
 

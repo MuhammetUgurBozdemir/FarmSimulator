@@ -1,6 +1,8 @@
 using Game.Scripts.Controllers;
 using Game.Scripts.Inventory;
+using Game.Scripts.Player;
 using Game.Scripts.Popup;
+using Game.Scripts.Settings;
 using Nevermind.CriminalWords.Installer;
 using Zenject;
 
@@ -24,7 +26,7 @@ namespace Game.Scripts.Initializers
         {
             GameSignalsInstaller.Install(Container);
 
-            Container.BindInterfacesAndSelfTo<ApplicationController>().AsSingle();
+            Container.BindInterfacesAndSelfTo<PlayerController>().AsSingle();
 
             Container.Bind<PopupController>().AsSingle();
             Container.Bind<InventoryController>().AsSingle();

@@ -28,6 +28,10 @@ namespace Game.Scripts.Player
          {
             _popupController.PopupRequest("MarketPopup",new PopupParameters());
          }
+         if (other.CompareTag($"Inventory"))
+         {
+            _popupController.PopupRequest("InventoryPopup",new PopupParameters());
+         }
       }
    }
 }

@@ -35,10 +35,8 @@ namespace Game.Scripts.PopupViews
 
         private void ListItem()
         {
-            foreach (FarmToolData toolSettingsFarmTool in _toolSettings.farmTools)
+            foreach (FarmToolData toolSettingsFarmTool in _inventoryController.ownedTools)
             {
-                if (_inventoryController.ownedTools.Contains(toolSettingsFarmTool)) continue;
-
                 var item = _diContainer.InstantiatePrefabForComponent<InventoryItemView>(itemViewPrefab);
                 item.transform.SetParent(contentHolder);
                 item.Init(toolSettingsFarmTool, RemoveSelectedItem);

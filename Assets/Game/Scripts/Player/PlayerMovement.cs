@@ -13,6 +13,7 @@ namespace Game.Scripts.Controllers.Player
         [SerializeField] private float speed = 5;
         [SerializeField] private Animator animator;
         [SerializeField] private Transform body;
+        public Transform toolHolder;
 
         private static readonly int IsRunning = Animator.StringToHash("isRunning");
         private float xRot;
@@ -48,6 +49,8 @@ namespace Game.Scripts.Controllers.Player
 
         void ProcessMove(Vector2 input)
         {
+            if(_popupController.isActive) return;
+            
             Vector3 moveDir = Vector3.zero;
 
             moveDir.x = input.x;

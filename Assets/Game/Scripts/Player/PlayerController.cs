@@ -1,19 +1,24 @@
 using System;
 using Game.Scripts.Controllers.Player;
+using Game.Scripts.Inventory;
+using Game.Scripts.Settings;
+using UnityEngine;
 using Zenject;
 
-namespace Game.Scripts.Controllers
+namespace Game.Scripts.Player
 {
-    public class ApplicationController : IInitializable, IDisposable
+    public class PlayerController : IInitializable, IDisposable
     {
         private PlayerMovement playerMovement;
+        private Transform ToolHolder;
+        private GameObject _equippedItem;
 
         #region Injection
 
         private DiContainer _diContainer;
         private PrefabSettings _prefabSettings;
 
-        public ApplicationController(DiContainer diContainer,
+        public PlayerController(DiContainer diContainer,
             PrefabSettings prefabSettings)
         {
             _diContainer = diContainer;
@@ -26,6 +31,10 @@ namespace Game.Scripts.Controllers
         {
             playerMovement = _diContainer.InstantiatePrefabForComponent<PlayerMovement>(_prefabSettings.playerMovement);
             playerMovement.Init();
+        }
+        public void EquipItem(FarmToolData data)
+        {
+            _equippedItem = _diContainer.InstantiatePrefab(data.FarmToolPrefab,playerMovement.toolHolder);
         }
 
         public void Dispose()
