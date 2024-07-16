@@ -23,17 +23,14 @@ namespace Game.Scripts.Controllers
         private readonly PrefabSettings _prefabSettings;
         private readonly BaseScreen.Factory _screenFactory;
         private readonly DiContainer _diContainer;
-        private SignalBus _signalBus;
 
         public ScreenController(PrefabSettings prefabSettings
             , BaseScreen.Factory screenFactory
-            , DiContainer diContainer,
-            SignalBus signalBus)
+            , DiContainer diContainer)
         {
             _prefabSettings = prefabSettings;
             _screenFactory = screenFactory;
             _diContainer = diContainer;
-            _signalBus = signalBus;
         }
 
         #endregion

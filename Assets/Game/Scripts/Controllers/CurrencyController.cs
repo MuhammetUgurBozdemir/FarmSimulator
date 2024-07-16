@@ -8,13 +8,28 @@ namespace Game.Scripts.Controllers
     {
         public int coinAmount;
         private SignalBus _signalBus;
+        private ScreenController _screenController;
         
         [Inject]
-        private void Construct(SignalBus signalBus)
+        private void Construct(SignalBus signalBus,ScreenController screenController)
         {
             _signalBus = signalBus;
+            _screenController = screenController;
         }
 
+        public void UpdateCoinAmount()
+        {
+            coinAmount += 900;
+            _screenController.GameView.UpdateCurrency();
+        }
+
+        public void ConsumeCoin(int amount)
+        {
+            if(amount>coinAmount) return;
+
+            coinAmount -= amount;
+            _screenController.GameView.UpdateCurrency();
+        }
         
     }
 }

@@ -78,7 +78,7 @@ namespace Game.Scripts.Player
 
         void ProcessMove(Vector2 input)
         {
-            if (_popupController.isActive) return;
+            if (_popupController.isActive || isAnimation) return;
 
             Vector3 moveDir = Vector3.zero;
 

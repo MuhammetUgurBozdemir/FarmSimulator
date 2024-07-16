@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using DG.Tweening;
 using Game.Scripts.Enum;
+using Game.Scripts.Inventory;
 using Game.Scripts.Player;
 using Game.Scripts.Popup;
 using Game.Scripts.Settings;
@@ -21,11 +22,13 @@ namespace Game.Scripts.FarmFields
         private int step;
         public bool isProcessing;
         private PlayerController _playerController;
+        private InventoryController _inventoryController;
 
         [Inject]
-        private void Construct(PlayerController playerController)
+        private void Construct(PlayerController playerController,InventoryController inventoryController)
         {
             _playerController = playerController;
+            _inventoryController = inventoryController;
         }
 
         public void Init()
@@ -53,6 +56,7 @@ namespace Game.Scripts.FarmFields
                             {
                                 plantPoint.ParticleSystem.SetActive(true);
                                 slider.value = 0;
+                                isProcessing = false;
                             });
 
                             plantPoint.meshFilter.transform.DOScale(new Vector3(2, 2, 2),_playerController.GetItemData.ProcessTime);
@@ -72,6 +76,8 @@ namespace Game.Scripts.FarmFields
                             plantPoint.ParticleSystem.SetActive(true);
                             step = 0;
                         }
+                        
+                        _inventoryController.Load();
                     }
 
                     break;

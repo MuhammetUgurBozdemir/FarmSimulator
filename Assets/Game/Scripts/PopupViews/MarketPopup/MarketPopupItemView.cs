@@ -1,4 +1,5 @@
 using System;
+using Game.Scripts.Controllers;
 using Game.Scripts.Inventory;
 using Game.Scripts.Settings;
 using TMPro;
@@ -15,13 +16,15 @@ namespace Game.Scripts.PopupViews
         private Action<MarketPopupItemView> _clickAction;
         private FarmToolData _data;
 
+
         private InventoryController _inventoryController;
+        private CurrencyController _currencyController;
 
         [Inject]
-        private void Construct(
-            InventoryController inventoryController)
+        private void Construct(InventoryController inventoryController,CurrencyController currencyController)
         {
             _inventoryController = inventoryController;
+            _currencyController = currencyController;
         }
         public void Init(FarmToolData data , Action<MarketPopupItemView> clickAction)
         {

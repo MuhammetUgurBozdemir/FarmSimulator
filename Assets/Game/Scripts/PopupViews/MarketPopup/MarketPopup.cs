@@ -1,7 +1,9 @@
 using System.Collections.Generic;
+using Game.Scripts.Controllers;
 using Game.Scripts.Inventory;
 using Game.Scripts.Popup;
 using Game.Scripts.Settings;
+using TMPro;
 using UnityEngine;
 using Zenject;
 
@@ -9,20 +11,24 @@ namespace Game.Scripts.PopupViews
 {
     public class MarketPopup : PopupView
     {
-        private DiContainer _diContainer;
-        private ToolSettings _toolSettings;
-        private InventoryController _inventoryController;
         private List<MarketPopupItemView> items = new List<MarketPopupItemView>();
         [SerializeField] private MarketPopupItemView itemViewPrefab;
         [SerializeField] private Transform contentHolder;
+        [SerializeField] private TextMeshProUGUI loadAmount;
+        
+        private DiContainer _diContainer;
+        private ToolSettings _toolSettings;
+        private InventoryController _inventoryController;
+        private CurrencyController _currencyController;
 
         [Inject]
         private void Construct(DiContainer diContainer, ToolSettings toolSettings,
-            InventoryController inventoryController)
+            InventoryController inventoryController,CurrencyController currencyController)
         {
             _diContainer = diContainer;
             _toolSettings = toolSettings;
             _inventoryController = inventoryController;
+            _currencyController = currencyController;
         }
 
 
@@ -31,6 +37,8 @@ namespace Game.Scripts.PopupViews
             base.ShowPopup();
 
             ListItem();
+
+            loadAmount.text ="Load Amount"+ _inventoryController.LoadAmount;
         }
 
         private void ListItem()
@@ -44,6 +52,13 @@ namespace Game.Scripts.PopupViews
                 item.Init(toolSettingsFarmTool, RemoveSelectedItem);
                 items.Add(item);
             }
+        }
+
+        public void SellButton()
+        {
+            _currencyController.UpdateCoinAmount();
+            _inventoryController.Unload();
+            loadAmount.text ="Load Amount: "+ _inventoryController.LoadAmount;
         }
 
         private void RemoveSelectedItem(MarketPopupItemView item)
