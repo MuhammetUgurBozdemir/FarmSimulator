@@ -36,6 +36,8 @@ namespace Game.Scripts.PopupViews
 
         public void OnClick()
         {
+            if (!_currencyController.ConsumeCoin(_data.Price)) return;
+            
             _inventoryController.ownedTools.Add(_data);
             _clickAction?.Invoke(this);
         }

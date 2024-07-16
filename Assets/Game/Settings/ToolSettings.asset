@@ -23,7 +23,7 @@ MonoBehaviour:
     OperatingType: 0000000002000000
     ProcessTime: 5
   - Name: Scythe
-    Price: 0
+    Price: 1800
     Level: 0
     IsUnlocked: 0
     FarmToolViewPrefab: {fileID: 7758205707187422574, guid: aabcbe65728fe46da80886677b132cf0, type: 3}

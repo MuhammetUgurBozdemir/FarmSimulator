@@ -9,9 +9,9 @@ namespace Game.Scripts.Controllers
         public int coinAmount;
         private SignalBus _signalBus;
         private ScreenController _screenController;
-        
+
         [Inject]
-        private void Construct(SignalBus signalBus,ScreenController screenController)
+        private void Construct(SignalBus signalBus, ScreenController screenController)
         {
             _signalBus = signalBus;
             _screenController = screenController;
@@ -23,13 +23,14 @@ namespace Game.Scripts.Controllers
             _screenController.GameView.UpdateCurrency();
         }
 
-        public void ConsumeCoin(int amount)
+        public bool ConsumeCoin(int amount)
         {
-            if(amount>coinAmount) return;
+            if (amount > coinAmount) return false;
 
             coinAmount -= amount;
             _screenController.GameView.UpdateCurrency();
+
+            return true;
         }
-        
     }
 }

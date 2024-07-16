@@ -16,23 +16,29 @@ namespace Game.Scripts.PopupViews
         [SerializeField] private TextMeshProUGUI priceText;
         private Action<InventoryItemView> _clickAction;
         private FarmToolData _data;
+        [SerializeField] private TextMeshProUGUI infoText;
 
         private InventoryController _inventoryController;
         private PlayerController _playerController;
+        private CurrencyController _currencyController;
 
         [Inject]
-        private void Construct(InventoryController inventoryController, PlayerController playerController)
+        private void Construct(InventoryController inventoryController, PlayerController playerController,
+            CurrencyController currencyController)
         {
             _inventoryController = inventoryController;
             _playerController = playerController;
+            _currencyController = currencyController;
         }
 
         public void Init(FarmToolData data, Action<InventoryItemView> clickAction)
         {
             sprite.sprite = data.Image;
-            priceText.text = data.Price.ToString();
             _clickAction = clickAction;
             _data = data;
+
+            infoText.text = _data.ProcessTime + "Seconds Harvest Time";
+
         }
 
         public void OnClick()
