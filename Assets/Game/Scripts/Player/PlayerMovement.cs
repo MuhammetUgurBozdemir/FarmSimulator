@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using DG.Tweening;
+using Game.Scripts.Controllers;
+using Game.Scripts.Enum;
 using Game.Scripts.FarmFields;
 using Game.Scripts.Popup;
 using UnityEngine;
@@ -13,6 +15,7 @@ namespace Game.Scripts.Player
         private PlayerInput playerInput;
         private PlayerInput.OnMoveActions onMove;
         private PlayerInput.ClickActions onClick;
+        private PlayerInput.EscapeActions escapeActions;
         [SerializeField] private CharacterController characterController;
         private Vector3 playerVelocity;
         [SerializeField] private float speed = 5;
@@ -33,14 +36,17 @@ namespace Game.Scripts.Player
         private Camera _mainCamera;
         private PopupController _popupController;
         private PlayerController _playerController;
+        private ScreenController _screenController;
 
         [Inject]
         private void Construct([Inject(Id = "mainCam")] Camera mainCamera, PopupController popupController,
-            PlayerController playerController)
+            PlayerController playerController,
+            ScreenController screenController)
         {
             _mainCamera = mainCamera;
             _popupController = popupController;
             _playerController = playerController;
+            _screenController = screenController;
         }
 
         public void Init()
@@ -50,10 +56,13 @@ namespace Game.Scripts.Player
             playerInput = new PlayerInput();
             onMove = playerInput.OnMove;
             onClick = playerInput.Click;
+            escapeActions = playerInput.Escape;
 
             onClick.Clicked.performed += ctx => ProcessHarvest();
+            escapeActions.Escape.performed += ctx => _screenController.ChangeState(ScreenState.MainMenuView);
 
             onMove.Enable();
+            escapeActions.Enable();
             onClick.Enable();
         }
 
@@ -79,7 +88,8 @@ namespace Game.Scripts.Player
 
             characterController.Move(transform.TransformDirection(moveDir) * speed * Time.deltaTime);
 
-            body.localEulerAngles = new Vector3(0, 0, 0);
+            body.localEulerAngles = Vector3.zero;
+            body.localPosition = Vector3.zero;
 
             if (input.x > 0 || input.y > 0)
             {
@@ -119,7 +129,10 @@ namespace Game.Scripts.Player
                 if (hit.transform.CompareTag($"Plant") &&
                     Vector3.Distance(transform.position, hit.transform.position) < 5)
                 {
-                    StartCoroutine(AnimDelay(hit.transform.GetComponent<FarmField>().Plant));
+                    var component = hit.transform.GetComponent<FarmField>();
+                    
+                    if(component.isProcessing) return;
+                    StartCoroutine(AnimDelay(component.Plant));
                 }
             }
         }
@@ -152,6 +165,7 @@ namespace Game.Scripts.Player
         {
             onMove.Disable();
             onClick.Disable();
+            escapeActions.Disable();
         }
     }
 }

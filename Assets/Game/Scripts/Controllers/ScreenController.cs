@@ -87,7 +87,7 @@ namespace Game.Scripts.Controllers
         {
             foreach (var baseScreen in _screens.Where(baseScreen => baseScreen != null))
             {
-                baseScreen.DestroyView(.5f);
+                baseScreen.DestroyView();
             }
             
             _screens.Clear();

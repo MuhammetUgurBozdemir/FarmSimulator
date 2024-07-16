@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: PrefabSettings
   m_EditorClassIdentifier: 
   playerMovement: {fileID: 354048003694456160, guid: 474afe81b613f41b9a0e4f7c17f291c9, type: 3}
+  GameView: {fileID: -8012851644013911804, guid: fd06abc92133a4357ba1b18dfa557f64, type: 3}
+  MainMenuUIView: {fileID: 4662108835131239711, guid: 1a84f04fe8ad14f0e8efb8203e60236a, type: 3}

@@ -61,7 +61,7 @@ CharacterController:
   m_StepOffset: 1
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.86, z: 0}
+  m_Center: {x: 0, y: 0.95, z: 0}
 --- !u!114 &354048003694456160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,9 +112,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.22520992
-  m_Height: 1.815783
+  m_Height: 1.7446334
   m_Direction: 1
-  m_Center: {x: -0.008587211, y: 0.88877416, z: 0}
+  m_Center: {x: -0.008587211, y: 0.92434895, z: 0}
 --- !u!1 &5472586215480337304
 GameObject:
   m_ObjectHideFlags: 0

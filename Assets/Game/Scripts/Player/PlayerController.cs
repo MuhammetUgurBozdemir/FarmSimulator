@@ -1,4 +1,6 @@
 using System;
+using Game.Scripts.Controllers;
+using Game.Scripts.Enum;
 using Game.Scripts.Inventory;
 using Game.Scripts.Settings;
 using UnityEngine;
@@ -21,20 +23,25 @@ namespace Game.Scripts.Player
         private DiContainer _diContainer;
         private PrefabSettings _prefabSettings;
         private InventoryController _inventoryController;
+        private ScreenController _screenController;
 
         public PlayerController(DiContainer diContainer,
             PrefabSettings prefabSettings,
-            InventoryController inventoryController)
+            InventoryController inventoryController,
+            ScreenController screenController)
         {
             _diContainer = diContainer;
             _prefabSettings = prefabSettings;
             _inventoryController = inventoryController;
+            _screenController = screenController;
         }
 
         #endregion
 
         public void Initialize()
         {
+            _screenController.ChangeState(ScreenState.MainMenuView);
+            
             playerMovement = _diContainer.InstantiatePrefabForComponent<PlayerMovement>(_prefabSettings.playerMovement);
             playerMovement.Init();
         }

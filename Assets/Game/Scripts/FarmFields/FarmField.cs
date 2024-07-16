@@ -19,6 +19,7 @@ namespace Game.Scripts.FarmFields
         [SerializeField] private Slider slider;
 
         private int step;
+        public bool isProcessing;
         private PlayerController _playerController;
 
         [Inject]
@@ -33,23 +34,28 @@ namespace Game.Scripts.FarmFields
 
         public void Plant()
         {
+            
             switch (step)
             {
                 case 0:
                 {
                     if (_playerController.GetItemData.OperatingType.Contains(OperationType.Digging))
                     {
+                        isProcessing = true;
                         foreach (var plantPoint in plantPoints)
                         {
+                            plantPoint.meshFilter.transform.localScale=Vector3.zero;
+                            plantPoint.meshFilter.mesh = farmFieldsSettings._farmFieldsData.Prefab[2];
+                            
                             DOTween.To(() => slider.value,
                                 x => slider.value = x, 1,
                                 _playerController.GetItemData.ProcessTime).SetEase(Ease.OutQuad).OnComplete(() =>
                             {
-                               
-                                plantPoint.meshFilter.mesh = farmFieldsSettings._farmFieldsData.Prefab[2];
                                 plantPoint.ParticleSystem.SetActive(true);
                                 slider.value = 0;
                             });
+
+                            plantPoint.meshFilter.transform.DOScale(new Vector3(2, 2, 2),_playerController.GetItemData.ProcessTime);
                         }
                         step++;
                     }
