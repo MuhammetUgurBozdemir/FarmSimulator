@@ -1,8 +1,7 @@
-using Nevermind.CriminalWords;
 using UnityEngine;
 using Zenject;
 
-namespace Nevermind.CriminalWords.Installer
+namespace Game.Scripts.Initializers
 {
     [CreateAssetMenu(fileName = nameof(GlobalSettingsInstaller), menuName = nameof(GlobalSettingsInstaller))]
     public class GlobalSettingsInstaller : ScriptableObjectInstaller<GlobalSettingsInstaller>

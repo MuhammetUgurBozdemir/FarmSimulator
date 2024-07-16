@@ -1,4 +1,5 @@
 using Game.Scripts.Player;
+using Game.Scripts.Views;
 using UnityEngine;
 
 namespace Game.Scripts.Settings
@@ -7,5 +8,7 @@ namespace Game.Scripts.Settings
      public class PrefabSettings : ScriptableObject
      {
           public PlayerMovement playerMovement;
+          public GameView GameView;
+          public MainMenuUIView MainMenuUIView;
      }
 }

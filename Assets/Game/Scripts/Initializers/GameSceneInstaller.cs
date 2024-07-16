@@ -3,7 +3,6 @@ using Game.Scripts.Inventory;
 using Game.Scripts.Player;
 using Game.Scripts.Popup;
 using Game.Scripts.Settings;
-using Nevermind.CriminalWords.Installer;
 using Zenject;
 
 namespace Game.Scripts.Initializers
@@ -31,6 +30,7 @@ namespace Game.Scripts.Initializers
             Container.Bind<PopupController>().AsSingle();
             Container.Bind<InventoryController>().AsSingle();
             Container.Bind<CurrencyController>().AsSingle();
+            Container.Bind<ScreenController>().AsSingle();
         }
     }
 }

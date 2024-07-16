@@ -12,4 +12,10 @@ namespace Game.Scripts.Enum
         Watering,
         Harvesting
     }
+    
+    public enum ScreenState
+    {
+        MainMenuView,
+        GameView
+    }
 }
