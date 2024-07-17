@@ -33,6 +33,7 @@ namespace Game.Scripts.Initializers
             Container.Bind<InventoryController>().AsSingle();
             Container.Bind<CurrencyController>().AsSingle();
             Container.Bind<ScreenController>().AsSingle();
+            Container.Bind<SettingsController>().AsSingle();
             
             Container.BindFactory<Object, BaseScreen, BaseScreen.Factory>().FromFactory<PrefabFactory<BaseScreen>>();
 

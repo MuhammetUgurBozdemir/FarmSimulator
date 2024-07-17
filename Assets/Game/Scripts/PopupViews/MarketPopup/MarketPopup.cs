@@ -38,7 +38,7 @@ namespace Game.Scripts.PopupViews
 
             ListItem();
 
-            loadAmount.text ="Load Amount"+ _inventoryController.LoadAmount;
+            loadAmount.text ="Load Amount: "+ _inventoryController.LoadAmount;
         }
 
         private void ListItem()
@@ -56,7 +56,7 @@ namespace Game.Scripts.PopupViews
 
         public void SellButton()
         {
-            _currencyController.UpdateCoinAmount();
+            _currencyController.UpdateCoinAmount(_inventoryController.LoadAmount);
             _inventoryController.Unload();
             loadAmount.text ="Load Amount: "+ _inventoryController.LoadAmount;
         }

@@ -28,7 +28,7 @@ namespace Game.Scripts.Player
         private static readonly int IsRunning = Animator.StringToHash("isRunning");
         private static readonly int IsDigging = Animator.StringToHash("isDigging");
 
-        private bool isAnimation;
+        private bool isAnimation=true;
 
         private float xRot;
         private float yRot;
@@ -37,22 +37,26 @@ namespace Game.Scripts.Player
         private PopupController _popupController;
         private PlayerController _playerController;
         private ScreenController _screenController;
+        private SettingsController _settingsController;
 
         [Inject]
         private void Construct([Inject(Id = "mainCam")] Camera mainCamera, PopupController popupController,
             PlayerController playerController,
-            ScreenController screenController)
+            ScreenController screenController,
+            SettingsController settingsController)
         {
             _mainCamera = mainCamera;
             _popupController = popupController;
             _playerController = playerController;
             _screenController = screenController;
+            _settingsController = settingsController;
         }
 
         public void Init()
         {
             _mainCamera.transform.SetParent(transform);
             camOrigin = _mainCamera.transform.localPosition;
+            ProcessLook(Vector2.zero);
             playerInput = new PlayerInput();
             onMove = playerInput.OnMove;
             onClick = playerInput.Click;
@@ -64,6 +68,15 @@ namespace Game.Scripts.Player
             onMove.Enable();
             escapeActions.Enable();
             onClick.Enable();
+
+            StartCoroutine(UnlockCam());
+        }
+
+        IEnumerator UnlockCam()
+        {
+            yield return new WaitForSeconds(2);
+
+            isAnimation = false;
         }
 
         void FixedUpdate()
@@ -113,10 +126,10 @@ namespace Game.Scripts.Player
             float mouseX = input.x;
             float mouseY = input.y;
 
-            xRot -= (mouseY * Time.deltaTime) * 120;
+            xRot -= (mouseY * Time.deltaTime) * _settingsController.Sensitivity;
 
             _mainCamera.transform.localRotation = Quaternion.Euler(xRot, 0, 0);
-            transform.Rotate(Vector3.up * (mouseX * Time.deltaTime) * 100);
+            transform.Rotate(Vector3.up * (mouseX * Time.deltaTime) * _settingsController.Sensitivity);
         }
 
 
@@ -130,8 +143,8 @@ namespace Game.Scripts.Player
                     Vector3.Distance(transform.position, hit.transform.position) < 5)
                 {
                     var component = hit.transform.GetComponent<FarmField>();
-                    
-                    if(component.isProcessing) return;
+
+                    if (component.isProcessing) return;
                     StartCoroutine(AnimDelay(component.Plant));
                 }
             }

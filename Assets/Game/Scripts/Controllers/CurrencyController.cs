@@ -17,9 +17,9 @@ namespace Game.Scripts.Controllers
             _screenController = screenController;
         }
 
-        public void UpdateCoinAmount()
+        public void UpdateCoinAmount(int amount)
         {
-            coinAmount += 900;
+            coinAmount += amount*100;
             _screenController.GameView.UpdateCurrency();
         }
 

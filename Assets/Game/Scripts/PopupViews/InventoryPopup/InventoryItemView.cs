@@ -37,7 +37,7 @@ namespace Game.Scripts.PopupViews
             _clickAction = clickAction;
             _data = data;
 
-            infoText.text = _data.ProcessTime + "Seconds Harvest Time";
+            infoText.text = _data.ProcessTime + " Seconds Harvest Time";
 
         }
 
